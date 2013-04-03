@@ -6,6 +6,8 @@
 #include "position.h"
 #include "park.h"
 
+
+
 class Cat: public Animal {
 friend class Scene;
 
@@ -31,11 +33,11 @@ protected:
 };
 
 
-class Human: public Animal {
+class Person: public Animal {
 friend class Scene;
 
 public:
-	Human(String s, Position p);
+	Person(String s, Position p);
 	virtual bool Chase();
 
 protected:
