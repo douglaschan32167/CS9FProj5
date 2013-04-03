@@ -43,6 +43,10 @@ public:
 	// than pi radians, and the radii of all the positions 
 	// are the same.
 	bool IsBetween (Position old, Position current);
+	
+	float getRadius();
+	float getAngleInRadians();
+	void moveDistance(float dist);
 
 private:
 	float myRadius;
