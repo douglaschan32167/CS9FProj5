@@ -9,7 +9,20 @@ Mouse::Mouse():Animal() {
 }
 
 bool Mouse::Chase() {
-	float rad = myPos.myRadius;
-	myPos.IncrementPosition(0.0, 1.25/rad);
-	return 0;
+	float rad = myPos.getRadius();
+	myPos.moveDistance(1.25);
+	return false;
+}
+
+
+Person::Person():Animal() {
+
+}
+bool Person::Chase() {
+	if (myPos.sees(myTarget.Pos())) {
+		return false;
+	} else {
+		myPos.moveDistance(2.0);
+		return false;
+	}
 }
