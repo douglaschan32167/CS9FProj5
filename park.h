@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "positions.h"
+#include <stdlib.h>
 class Animal {
 friend class Scene;
 public:

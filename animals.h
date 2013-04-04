@@ -1,9 +1,9 @@
 #ifndef ANIMALS_H
 #define ANIMALS_H
 
-#include <String>
-#include <Vector>
-#include "position.h"
+#include <string>
+#include <vector>
+#include "positions.h"
 #include "park.h"
 
 
@@ -12,7 +12,7 @@ class Cat: public Animal {
 friend class Scene;
 
 public:
-	Cat(String s, Position p);
+	Cat(string s, Position p);
 	virtual bool Chase(); //const?
 
 
@@ -25,7 +25,7 @@ class Mouse: public Animal {
 friend class Scene;
 
 public:
-	Mouse(String s, Position P);
+	Mouse(string s, Position P);
 	virtual bool Chase();
 
 protected:
@@ -37,7 +37,7 @@ class Person: public Animal {
 friend class Scene;
 
 public:
-	Person(String s, Position p);
+	Person(string s, Position p);
 	virtual bool Chase();
 
 protected:
