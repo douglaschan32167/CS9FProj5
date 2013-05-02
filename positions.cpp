@@ -1,5 +1,6 @@
 #include "positions.h"
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 Position::Position() {
@@ -28,6 +29,7 @@ bool Position::operator== (Position coords) {
 	return (myRadius == coords.getRadius() && myAngleInRadians == coords.getAngleInRadians());
 }
 
+//could have been done with fried classes
 float Position::getRadius() {
 	return myRadius;
 }
@@ -45,6 +47,9 @@ void Position::IncrementPosition(float rChange, float thetaChange) {
 	while(myAngleInRadians > 6.28) {
 		myAngleInRadians -= 6.28;
 	}
+	while (myAngleInRadians < 0) {
+		myAngleInRadians += 6.28;
+	}
 }
 
 void Position::moveDistance(float dist) {
@@ -52,9 +57,10 @@ void Position::moveDistance(float dist) {
 }
 
 bool Position::IsBetween(Position old, Position current) {
-	return ((old.getAngleInRadians() <= myAngleInRadians and myAngleInRadians <= current.getAngleInRadians())
-		or (old.getAngleInRadians() >= myAngleInRadians and myAngleInRadians >= current.getAngleInRadians()));
-
+	//return ((old.getAngleInRadians() <= myAngleInRadians and myAngleInRadians <= current.getAngleInRadians())
+	//	or (old.getAngleInRadians() >= myAngleInRadians and myAngleInRadians >= current.getAngleInRadians()));
+	float maxGap = cos(current.getAngleInRadians() - old.getAngleInRadians());
+	return (cos(myAngleInRadians - old.getAngleInRadians()) > maxGap) && (cos(current.getAngleInRadians() - myAngleInRadians) > maxGap);
 }
 
 
