@@ -184,7 +184,22 @@ SortedListIterator<NODETYPE>::SortedListIterator() {
 
 template <class NODETYPE>
 SortedListIterator<NODETYPE>::SortedListIterator(const SortedList<NODETYPE> & val) {
-  myList = new SortedList<NODETYPE>(val);
+  myList = new SortedList<NODETYPE>();
+
+  ListNode <NODETYPE>* listCurrent = val.myFirst;
+	ListNode <NODETYPE>* newCurrent = 0;
+	while (listCurrent != 0) {
+		ListNode <NODETYPE> *temp 
+		  = new ListNode <NODETYPE> (listCurrent->Info ());
+		if (newCurrent == 0) {
+			myList->myFirst = temp;
+			newCurrent = myList->myFirst;
+		} else {
+			newCurrent->myNext = temp;
+			newCurrent = temp;
+		}
+		listCurrent = listCurrent->myNext;
+	}
 }
 
 template <class NODETYPE>
