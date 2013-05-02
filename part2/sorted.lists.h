@@ -160,18 +160,6 @@ SortedList<NODETYPE> & SortedList<NODETYPE>::operator = (const SortedList<NODETY
 	}
   return *this;
 }
-template <class NODETYPE>
-void deleteSortedList(ListNode<NODETYPE> &toDel) {
-  // destroy all existing entries
-  while (toDel != 0) {
-    ListNode<NODETYPE> *next = toDel->myNext;
-    cout << " " << toDel->Info();
-    delete toDel;
-    toDel = next;
-  }
-  cout << endl;
-}
-
 
 
 /* ------ SortedListIterator class definition (Part 3) ------ */
