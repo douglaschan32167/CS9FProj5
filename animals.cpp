@@ -6,7 +6,8 @@
 #include <string>
 using namespace std;
 
-Mouse::Mouse(String s, Position p):Animal(String s, Position p) {
+Mouse::Mouse(string s, Position p)
+  : Animal(s, p) {
 
 
 }
@@ -19,11 +20,12 @@ bool Mouse::Chase() {
 }
 
 
-Person::Person(String s, Position p):Animal(String s, Position p) {
+Person::Person(string s, Position p)
+  : Animal(s, p) {
 
 }
 bool Person::Chase() {
-	if (myPos.sees(myTarget.Pos())) {
+	if (myPos.Sees(myTarget->Pos())) {
 		cout << "person sees target" << endl;
 		return false;
 	} else {
@@ -33,22 +35,24 @@ bool Person::Chase() {
 	}
 }
 
-Cat::Cat(String s, Position p):Animal(String s, Position p) {
+Cat::Cat(string s, Position p)
+  : Animal(s, p) {
 
 }
 
 bool Cat::Chase() {
-	if (myPos.sees(myTarget.Pos())) {
+	if (myPos.Sees(myTarget->Pos())) {
 		myPos.IncrementPosition(1.0, 0.0);
 	} else {
 		Position temp = myPos;
 		temp.moveDistance(2.0);
-		if (myTarget.Pos().isBetween(myPos, temp)) {
+		if (myTarget->Pos().IsBetween(myPos, temp)) {
 			cout << "cat caught mouse" << endl;
 			return true;
 		} else {
 			myPos.moveDistance(2.0);
 		}
 	}
+}
 	
 	
